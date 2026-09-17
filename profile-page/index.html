@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- TODO (step 3): add a <header> containing a <nav> with class="nav".
+         Inside the nav: your name on one side, and a list of links
+         to #about, #skills and #goals on the other. -->
+         <header>
+           <nav class="nav">
+             <span class="name">Damian Grobler</span>
+             <ul>
+               <li><a href="#about">About</a></li>
+               <li><a href="#skills">Skills</a></li>
+               <li><a href="#goals">Goals</a></li>
+             </ul>
+           </nav>
+         </header>
+
+    <!-- TODO (step 3): add a <main> with three <section>s: About, Skills and Goals.
+         Give each section an id (about, skills, goals) so the nav links jump to it. -->
+         
+    <!-- TODO (step 3): in the About section, add an <h2>, a short paragraph about you,
+         and a <button class="btn">Contact me</button> (step 6). -->
+
+         <main> 
+           <section id="about">
+             <h2>About Me</h2>
+             <p>Hi, I am Damian. I build games and apps, and I am learning web layout
+          so I can put my work on the internet in a clear, simple way.</p>
+             <button class="btn">Contact me</button>
+           </section>
+
+    <!-- TODO (step 5): in the Skills section, add an <h2> and a <div class="cards">
+         containing three <article class="card"> elements, one per skill. -->
+
+           <section id="skills">
+             <h2>Skills</h2>
+             <div class="cards">
+               <article class="card">
+                 <h3>JavaScript</h3>
+                 <p>Proficient in JavaScript, including ES6+ features and asynchronous programming.</p>
+               </article>
+               <article class="card">
+                 <h3>React</h3>
+                 <p>Experienced in building single-page applications using React and its ecosystem.</p>
+               </article>
+               <article class="card">
+                 <h3>CSS</h3>
+                 <p>Skilled in CSS, including Flexbox, Grid, and responsive design techniques.</p>
+               </article>
+             </div>
+           </section>
+
+    <!-- TODO (step 3): in the Goals section, add an <h2> and a list of your goals. -->
+
+           <section id="goals">
+             <h2>Goals</h2>
+             <ul>
+               <li>Continue to improve my React skills.</li>
+               <li>Learn TypeScript to enhance my JavaScript development.</li>
+               <li>Contribute to open-source projects.</li>
+             </ul>
+           </section>
+
+    <!-- TODO (step 3): add a <footer> with your name and the year. -->
+               <footer>
+                    <p>Damian Grobler · 2026</p>
+               </footer>
+          </body>
+     </html>
+  </body>
+</html>
