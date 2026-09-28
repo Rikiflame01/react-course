@@ -1,56 +1,163 @@
 #root {
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 40px 24px 64px;
+}
+
+.page-header {
+  margin-bottom: 28px;
+}
+
+.page-kicker {
+  margin: 0 0 4px;
+  color: #4338ca;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 /* Lab 3.1: Button */
 .btn {
   font: inherit;
-  border-radius: 6px;
-  border: 1px solid transparent;
+  font-weight: 650;
+  border-radius: 999px;
+  border: 2px solid transparent;
   cursor: pointer;
-  margin-right: 8px;
+  margin-right: 10px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
-.btn-sm {
-  padding: 4px 8px;
-  font-size: 0.875rem;
+.btn:hover {
+  transform: translateY(-1px);
 }
+
 
 .btn-md {
-  padding: 8px 16px;
+  padding: 9px 18px;
 }
 
-.btn-lg {
-  padding: 12px 20px;
-  font-size: 1.125rem;
-}
 
 .btn-primary {
-  background: #0f766e;
+  background: #2563eb;
   color: #ffffff;
 }
 
+.btn-primary:hover {
+  background: #1e40af;
+}
+
 .btn-secondary {
-  background: #ffffff;
-  color: #0f766e;
-  border-color: #0f766e;
+  background: transparent;
+  color: #1e3a8a;
+  border-color: #a5b4fc;
+}
+
+.btn-secondary:hover {
+  background: #e0e7ff;
 }
 
 /* Lab 3.1: Card */
 .card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
+  border: none;
+  border-radius: 20px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.08);
 }
 
 .card h2 {
-  margin-top: 0;
+  margin: 0 0 12px;
+  font-family: Georgia, "Palatino Linotype", serif;
 }
 
 .card-highlight {
-  border-color: #0f766e;
+  outline: 3px solid #2563eb;
+}
+
+.catalogue-title {
+  margin: 36px 0 14px;
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: 1.75rem;
+}
+
+/* Lab 3.2: product catalogue */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  border-top: 6px solid #2563eb;
+}
+
+.product-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 28px;
+}
+
+.product-category {
+  margin: 0;
+  color: #a30f0f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-card h3 {
+  margin: 10px 0 16px;
+  font-size: 1.2rem;
+}
+
+.product-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.product-price,
+.product-rating {
+  margin: 0;
+}
+
+.product-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.product-rating {
+  color: #d97706;
+  letter-spacing: 0.08em;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: #1e1b4b;
+  color: #f5f3ff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }

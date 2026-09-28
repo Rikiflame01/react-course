@@ -1,8 +1,9 @@
-/* Global styles: a simple starting point for TaskBoard */
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
   line-height: 1.5;
-  color: #1f2937;
-  background: #f9fafb;
+  color: #1e1b4b;
+  background:
+    radial-gradient(circle at top left, #e0e7ff 0, transparent 42%),
+    #f5f3ff;
 }
