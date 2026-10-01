@@ -428,6 +428,82 @@
   color: #4338ca;
 }
 
+/* Lab 5.2: I styled the Open-Meteo weather dashboard to match the board. */
+.weather-dashboard {
+  margin: 24px 0;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.08);
+}
+
+.weather-dashboard h2 {
+  margin: 0 0 14px;
+  font-family: Georgia, "Palatino Linotype", serif;
+}
+
+.weather-dashboard label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 650;
+}
+
+.weather-dashboard select {
+  min-width: 220px;
+  min-height: 36px;
+  margin-bottom: 12px;
+  padding: 6px 8px;
+  border: 1px solid #a5b4fc;
+  border-radius: 6px;
+  font: inherit;
+  color: #1e1b4b;
+  background: #ffffff;
+}
+
+.weather-hint {
+  margin: 0;
+  color: #6d6a8a;
+}
+
+.weather-dashboard [role="alert"] {
+  margin: 0;
+  color: #b91c1c;
+}
+
+.weather-stats p {
+  margin: 0 0 6px;
+}
+
+.weather-stats p:last-child {
+  margin-bottom: 0;
+  color: #4338ca;
+}
+
+/* Lab 5.3: I styled the seed loading message and reset control. */
+.seed-loading {
+  margin: 48px auto;
+  max-width: 1080px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.08);
+  color: #4338ca;
+  font-weight: 650;
+}
+
+.reset-board {
+  margin-bottom: 16px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #991b1b;
+  background: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 @media (max-width: 760px) {
   .board {
     grid-template-columns: 1fr;
