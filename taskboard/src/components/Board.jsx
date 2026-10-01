@@ -6,7 +6,8 @@ const columns = [
   { status: "done", heading: "Done" },
 ];
 
-function Board({ tasks }) {
+// Lab 4.3: Board filters tasks by status and forwards task actions.
+function Board({ tasks, onStatusChange, onRename, onDelete }) {
   return (
     <div className="board">
       {columns.map((column) => (
@@ -15,6 +16,9 @@ function Board({ tasks }) {
           status={column.status}
           heading={column.heading}
           tasks={tasks.filter((task) => task.status === column.status)}
+          onStatusChange={onStatusChange}
+          onRename={onRename}
+          onDelete={onDelete}
         />
       ))}
     </div>

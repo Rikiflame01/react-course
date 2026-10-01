@@ -1,6 +1,7 @@
 import TaskCard from "./TaskCard.jsx";
 
-function Column({ heading, status, tasks }) {
+// Lab 4.3: Column forwards each task and its actions to TaskCard.
+function Column({ heading, status, tasks, onStatusChange, onRename, onDelete }) {
   return (
     <section className={`column column-${status}`}>
       <h2>
@@ -12,7 +13,7 @@ function Column({ heading, status, tasks }) {
         <ul>
           {tasks.map((task) => (
             <li key={task.id}>
-              <TaskCard title={task.title} assignee={task.assignee} points={task.points} />
+              <TaskCard task={task} onStatusChange={onStatusChange} onRename={onRename} onDelete={onDelete} />
             </li>
           ))}
         </ul>

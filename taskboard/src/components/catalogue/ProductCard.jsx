@@ -1,6 +1,7 @@
 import { formatPrice } from "./formatPrice.js";
 
-function ProductCard({ name, price, rating, inStock, category }) {
+// Lab 4.2: Product card adds in-stock products to the cart.
+function ProductCard({ id, name, price, rating, inStock, category, onAddToCart }) {
   return (
     <article className="card product-card">
       <div className="product-card-top">
@@ -16,6 +17,9 @@ function ProductCard({ name, price, rating, inStock, category }) {
           </p>
         )}
       </div>
+      <button type="button" disabled={!inStock} onClick={() => onAddToCart(id)}>
+        {inStock ? "Add to cart" : "Unavailable"}
+      </button>
     </article>
   );
 }

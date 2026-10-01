@@ -1,3 +1,4 @@
+// Lab 4.3: Header displays the current task count.
 function Header({ tasks }) {
   return (
     <header className="page-header">
