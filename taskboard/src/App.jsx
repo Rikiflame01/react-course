@@ -7,6 +7,7 @@ import ThemeToggle from "./components/ThemeToggle.jsx";
 import Accordion from "./components/Accordion.jsx";
 import Shop from "./components/catalogue/Shop.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
+import ProductSearch from "./components/ProductSearch.jsx";
 import { tasks as initialTasks } from "./data/tasks.js";
 
 // Lab 4.3: App owns task data and passes update actions down to the board.
@@ -43,6 +44,8 @@ function App() {
       {/* Lab 4.3: controlled task form and interactive task board. */}
       <AddTaskForm onAdd={handleAdd} />
       <Board tasks={tasks} onStatusChange={handleStatusChange} onRename={handleRename} onDelete={handleDelete} />
+      {/* Lab 5.1: I rendered ProductSearch here for the debounce search lab. */}
+      <ProductSearch />
       <section className="practice">
         {/* Lab 4.1: counter, theme toggle, and accordion practice. */}
         <h2>Lab 4.1 practice</h2>
