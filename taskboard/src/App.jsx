@@ -7,6 +7,7 @@ import ThemeToggle from "./components/ThemeToggle.jsx";
 import Accordion from "./components/Accordion.jsx";
 import Shop from "./components/catalogue/Shop.jsx";
 import AddTaskForm from "./components/AddTaskForm.jsx";
+import ProductSearch from "./components/ProductSearch.jsx";
 import WeatherDashboard from "./components/WeatherDashboard.jsx";
 import { useLocalStorage } from "./hooks/useLocalStorage.js";
 
@@ -80,6 +81,10 @@ function App() {
       {/* Lab 4.3: controlled task form and interactive task board. */}
       <AddTaskForm onAdd={handleAdd} />
       <Board tasks={tasks} onStatusChange={handleStatusChange} onRename={handleRename} onDelete={handleDelete} />
+      <section className="practice">
+        {/* Lab 5.1: search-as-you-type with DummyJSON and a 400ms debounce. */}
+        <ProductSearch />
+      </section>
       {/* Lab 5.2: I rendered WeatherDashboard here for the weather lab. */}
       <WeatherDashboard />
       <section className="practice">
