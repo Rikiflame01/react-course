@@ -268,7 +268,7 @@
 
 .task-form-fields {
   display: grid;
-  grid-template-columns: minmax(160px, 2fr) minmax(140px, 1fr) 100px auto;
+  grid-template-columns: minmax(160px, 2fr) minmax(140px, 1fr) 100px minmax(140px, 1fr) auto;
   gap: 12px;
   align-items: end;
 }
@@ -502,6 +502,101 @@
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* Lab 6.2: shared nav, search, and page panels. */
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.08);
+}
+
+.app-nav a {
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 650;
+}
+
+.app-nav a:hover {
+  color: #4338ca;
+}
+
+.app-nav-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: #4338ca;
+  font-weight: 650;
+}
+
+.app-nav-user button,
+.login-form button {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid #a5b4fc;
+  border-radius: 8px;
+  color: #1e3a8a;
+  background: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.task-search,
+.page-panel,
+.login-form {
+  margin: 0 0 24px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 16px 40px rgba(49, 46, 129, 0.08);
+}
+
+.task-search label,
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 650;
+}
+
+.task-search input,
+.login-form input,
+.task-form select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 6px 8px;
+  border: 1px solid #a5b4fc;
+  border-radius: 6px;
+  font: inherit;
+  color: #1e1b4b;
+  background: #ffffff;
+}
+
+.page-panel h1,
+.login-form h1 {
+  margin: 0 0 12px;
+  font-family: Georgia, "Palatino Linotype", serif;
+}
+
+.page-panel a {
+  color: #2563eb;
+  font-weight: 650;
+}
+
+.login-form button {
+  margin-top: 12px;
+  color: #ffffff;
+  border-color: #2563eb;
+  background: #2563eb;
 }
 
 @media (max-width: 760px) {

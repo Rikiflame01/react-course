@@ -1,10 +1,42 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+// Lab 6.2 / Lab 6.3
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import "./index.css";
+import "./App.css";
+import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashboard";
+import Project from "./pages/Project";
+import Settings from "./pages/Settings";
+import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import RequireAuth from "./components/RequireAuth";
 
-createRoot(document.getElementById('root')!).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <NotFound />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "projects/:projectId", element: <Project /> },
+      {
+        path: "settings",
+        element: (
+          <RequireAuth>
+            <Settings />
+          </RequireAuth>
+        ),
+      },
+      { path: "login", element: <Login /> },
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <RouterProvider router={router} />
+  </StrictMode>
+);
+

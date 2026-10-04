@@ -1,26 +1,36 @@
+// Lab 6.2
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
+import { projects } from "../data/projects";
 
 export type NewTaskFields = {
   title: string;
   assignee: string;
   points: number;
+  projectId: string;
 };
 
 type AddTaskFormProps = {
   onAdd: (task: NewTaskFields) => void;
+  projectId?: string;
 };
 
 type FormState = {
   title: string;
   assignee: string;
   points: string;
+  projectId: string;
 };
 
 // Lab 4.3: Controlled form for creating tasks.
-const emptyForm: FormState = { title: "", assignee: "", points: "1" };
+const emptyForm: FormState = {
+  title: "",
+  assignee: "",
+  points: "1",
+  projectId: projects[0]?.id ?? "website",
+};
 
-function AddTaskForm({ onAdd }: AddTaskFormProps) {
+function AddTaskForm({ onAdd, projectId }: AddTaskFormProps) {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const titleRef = useRef<HTMLInputElement>(null);
@@ -30,7 +40,7 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
     titleRef.current?.focus();
   }, []);
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleChange(event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value } = event.target;
     setForm((previousForm) => ({ ...previousForm, [name]: value }));
     if (name === "title" && value.trim().length >= 3) setError("");
@@ -47,6 +57,7 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
       title,
       assignee: form.assignee.trim(),
       points: Math.max(1, Number(form.points) || 1),
+      projectId: projectId ?? form.projectId,
     });
     setForm({ ...emptyForm });
     setError("");
@@ -88,6 +99,23 @@ function AddTaskForm({ onAdd }: AddTaskFormProps) {
             onChange={handleChange}
           />
         </div>
+        {projectId ? null : (
+          <div>
+            <label htmlFor="new-task-project">Project</label>
+            <select
+              id="new-task-project"
+              name="projectId"
+              value={form.projectId}
+              onChange={handleChange}
+            >
+              {projects.map((project) => (
+                <option key={project.id} value={project.id}>
+                  {project.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <button type="submit">Add task</button>
       </div>
       {error && <p id="new-task-error" role="alert">{error}</p>}

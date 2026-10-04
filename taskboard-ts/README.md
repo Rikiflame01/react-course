@@ -1,6 +1,8 @@
 # TaskBoard (TypeScript)
 
-Lab 6.1: Convert TaskBoard to TypeScript. New Vite `react-ts` project next to `taskboard`, with Day 5 board source typed and earlier practice labs left out.
+Lab 6.1: Convert TaskBoard to TypeScript.
+Lab 6.2: Multi-page routing with a shared layout, project pages, and search in the URL.
+Lab 6.3: Mock login and a protected Settings route.
 
 ```bash
 npm install

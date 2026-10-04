@@ -1,3 +1,4 @@
+// Lab 6.1 board shell. Lab 6.2 moved routing into main.tsx and pages/.
 import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
