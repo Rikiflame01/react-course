@@ -1,17 +1,9 @@
-// Lab 6.2
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
 import { projects } from "../data/projects";
-
-export type NewTaskFields = {
-  title: string;
-  assignee: string;
-  points: number;
-  projectId: string;
-};
+import { useTaskStore } from "../state/useTaskStore";
 
 type AddTaskFormProps = {
-  onAdd: (task: NewTaskFields) => void;
   projectId?: string;
 };
 
@@ -22,7 +14,6 @@ type FormState = {
   projectId: string;
 };
 
-// Lab 4.3: Controlled form for creating tasks.
 const emptyForm: FormState = {
   title: "",
   assignee: "",
@@ -30,13 +21,13 @@ const emptyForm: FormState = {
   projectId: projects[0]?.id ?? "website",
 };
 
-function AddTaskForm({ onAdd, projectId }: AddTaskFormProps) {
+function AddTaskForm({ projectId }: AddTaskFormProps) {
+  const addTask = useTaskStore((s) => s.addTask);
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const titleRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Lab 5.3: I focus the title field when the form first appears.
     titleRef.current?.focus();
   }, []);
 
@@ -53,10 +44,13 @@ function AddTaskForm({ onAdd, projectId }: AddTaskFormProps) {
       setError("Title needs 3+ characters.");
       return;
     }
-    onAdd({
+    addTask({
+      id: crypto.randomUUID(),
       title,
       assignee: form.assignee.trim(),
       points: Math.max(1, Number(form.points) || 1),
+      status: "todo",
+      tags: [],
       projectId: projectId ?? form.projectId,
     });
     setForm({ ...emptyForm });

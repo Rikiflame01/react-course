@@ -1,4 +1,4 @@
-// Lab 6.2
+// Lab 7.2: seeding left Layout. Tasks now live in the Zustand store.
 import type { Task } from "../types";
 import { projects } from "./projects";
 

@@ -1,16 +1,18 @@
 import { useEffect } from "react";
-import type { Task } from "../types";
+import { useTaskStore } from "../state/useTaskStore";
 
 type HeaderProps = {
-  tasks: Task[];
+  projectId?: string;
 };
 
-// Lab 4.3: Header displays the current task count.
-function Header({ tasks }: HeaderProps) {
+function Header({ projectId }: HeaderProps) {
+  const allTasks = useTaskStore((s) => s.tasks);
+  const tasks = projectId
+    ? allTasks.filter((task) => task.projectId === projectId)
+    : allTasks;
   const openCount = tasks.filter((task) => task.status !== "done").length;
 
   useEffect(() => {
-    // Lab 5.3: I keep the browser tab title in sync with how many tasks are still open.
     document.title = `TaskBoard (${openCount} open)`;
   }, [openCount]);
 

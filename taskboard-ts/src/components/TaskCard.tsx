@@ -1,23 +1,23 @@
 import { useState } from "react";
 import type { ChangeEvent, KeyboardEvent } from "react";
+import { useTaskStore } from "../state/useTaskStore";
 import type { Status, Task } from "../types";
 
 type TaskCardProps = {
   task: Task;
-  onStatusChange: (id: string, status: Status) => void;
-  onRename: (id: string, title: string) => void;
-  onDelete: (id: string) => void;
 };
 
-// Lab 4.3: TaskCard supports local title editing and reports task actions upward.
-function TaskCard({ task, onStatusChange, onRename, onDelete }: TaskCardProps) {
+function TaskCard({ task }: TaskCardProps) {
+  const moveTask = useTaskStore((s) => s.moveTask);
+  const renameTask = useTaskStore((s) => s.renameTask);
+  const deleteTask = useTaskStore((s) => s.deleteTask);
   const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(task.title);
 
   function handleSave() {
     const title = draft.trim();
     if (title.length < 3) return;
-    onRename(task.id, title);
+    renameTask(task.id, title);
     setIsEditing(false);
   }
 
@@ -27,7 +27,7 @@ function TaskCard({ task, onStatusChange, onRename, onDelete }: TaskCardProps) {
   }
 
   function handleStatusChange(event: ChangeEvent<HTMLSelectElement>) {
-    onStatusChange(task.id, event.target.value as Status);
+    moveTask(task.id, event.target.value as Status);
   }
 
   function handleTitleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
@@ -39,7 +39,7 @@ function TaskCard({ task, onStatusChange, onRename, onDelete }: TaskCardProps) {
   }
 
   function handleDeleteClick() {
-    if (window.confirm(`Delete "${task.title}"?`)) onDelete(task.id);
+    if (window.confirm(`Delete "${task.title}"?`)) deleteTask(task.id);
   }
 
   return (

@@ -1,17 +1,28 @@
+import { useSearchParams } from "react-router";
 import TaskCard from "./TaskCard";
-import type { Status, Task } from "../types";
+import { useFilterStore } from "../state/useFilterStore";
+import { useTaskStore } from "../state/useTaskStore";
+import type { Status } from "../types";
 
 type ColumnProps = {
   heading: string;
   status: Status;
-  tasks: Task[];
-  onStatusChange: (id: string, status: Status) => void;
-  onRename: (id: string, title: string) => void;
-  onDelete: (id: string) => void;
+  projectId?: string;
 };
 
-// Lab 4.3: Column forwards each task and its actions to TaskCard.
-function Column({ heading, status, tasks, onStatusChange, onRename, onDelete }: ColumnProps) {
+function Column({ heading, status, projectId }: ColumnProps) {
+  const allTasks = useTaskStore((s) => s.tasks);
+  const assignee = useFilterStore((s) => s.assignee);
+  const [searchParams] = useSearchParams();
+  const q = (searchParams.get("q") ?? "").toLowerCase();
+
+  const tasks = allTasks.filter((task) =>
+    task.status === status &&
+    (!projectId || task.projectId === projectId) &&
+    (!assignee || task.assignee === assignee) &&
+    task.title.toLowerCase().includes(q)
+  );
+
   return (
     <section className={`column column-${status}`}>
       <h2>
@@ -23,12 +34,7 @@ function Column({ heading, status, tasks, onStatusChange, onRename, onDelete }: 
         <ul>
           {tasks.map((task) => (
             <li key={task.id}>
-              <TaskCard
-                task={task}
-                onStatusChange={onStatusChange}
-                onRename={onRename}
-                onDelete={onDelete}
-              />
+              <TaskCard task={task} />
             </li>
           ))}
         </ul>

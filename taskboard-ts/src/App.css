@@ -567,7 +567,12 @@
   font-weight: 650;
 }
 
+.task-search label:not(:first-child) {
+  margin-top: 12px;
+}
+
 .task-search input,
+.task-search select,
 .login-form input,
 .task-form select {
   display: block;
