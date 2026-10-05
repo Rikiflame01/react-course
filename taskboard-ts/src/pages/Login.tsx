@@ -1,4 +1,5 @@
-// Lab 6.3
+// Lab 6.3: login form and redirect
+// Lab 7.1: useAuth from AuthContext
 import { useState } from "react";
 import type { SubmitEvent } from "react";
 import { useLocation, useNavigate } from "react-router";

@@ -1,3 +1,5 @@
+// Lab 6.2: nav and Outlet
+// Lab 7.1: ThemeButton, useAuth
 import { NavLink, Outlet, useNavigate } from "react-router";
 import { ThemeButton } from "../components/ThemeButton";
 import { useAuth } from "../hooks/useAuth";

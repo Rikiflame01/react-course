@@ -1,4 +1,7 @@
+// Lab 7.3
+import { useQuery } from "@tanstack/react-query";
 import Column from "./Column";
+import { fetchTasks } from "../api/tasks";
 import type { Status } from "../types";
 
 type BoardProps = {
@@ -12,6 +15,12 @@ const columns: { status: Status; heading: string }[] = [
 ];
 
 function Board({ projectId }: BoardProps) {
+  const { isPending, isError, error } =
+    useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
+
+  if (isPending) return <p className="seed-loading">Loading tasks...</p>;
+  if (isError) return <p role="alert">{error.message}</p>;
+
   return (
     <div className="board">
       {columns.map((column) => (

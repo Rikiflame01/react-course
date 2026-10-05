@@ -1,6 +1,5 @@
+// Lab 7.2: assignee filter. Search stays in the URL (Lab 6.2).
 import { create } from "zustand";
-
-// Search stays in the URL (useSearchParams, Lab 6.2).
 type FilterStore = {
   assignee: string;
   setAssignee: (assignee: string) => void;

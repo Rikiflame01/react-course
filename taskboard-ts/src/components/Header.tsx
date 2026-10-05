@@ -1,12 +1,14 @@
+// Lab 7.3
 import { useEffect } from "react";
-import { useTaskStore } from "../state/useTaskStore";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTasks } from "../api/tasks";
 
 type HeaderProps = {
   projectId?: string;
 };
 
 function Header({ projectId }: HeaderProps) {
-  const allTasks = useTaskStore((s) => s.tasks);
+  const { data: allTasks = [] } = useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
   const tasks = projectId
     ? allTasks.filter((task) => task.projectId === projectId)
     : allTasks;

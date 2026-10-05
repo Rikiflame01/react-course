@@ -1,14 +1,18 @@
+// Lab 6.2: project route
+// Lab 7.2: FilterBar
+// Lab 7.3: tasks from useQuery
 import { Link, useParams } from "react-router";
 import Header from "../components/Header";
 import Board from "../components/Board";
 import AddTaskForm from "../components/AddTaskForm";
 import FilterBar from "../components/FilterBar";
 import { projects } from "../data/projects";
-import { useTaskStore } from "../state/useTaskStore";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTasks } from "../api/tasks";
 
 export default function Project() {
   const { projectId } = useParams();
-  const tasks = useTaskStore((s) => s.tasks);
+  const { data: tasks = [] } = useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
   const project = projects.find((item) => item.id === projectId);
 
   if (!project) {

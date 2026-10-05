@@ -1,7 +1,10 @@
+// Lab 7.3: tasks from useQuery
+// Lab 7.2: assignee from useFilterStore
+import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
 import TaskCard from "./TaskCard";
+import { fetchTasks } from "../api/tasks";
 import { useFilterStore } from "../state/useFilterStore";
-import { useTaskStore } from "../state/useTaskStore";
 import type { Status } from "../types";
 
 type ColumnProps = {
@@ -11,7 +14,7 @@ type ColumnProps = {
 };
 
 function Column({ heading, status, projectId }: ColumnProps) {
-  const allTasks = useTaskStore((s) => s.tasks);
+  const { data: allTasks = [] } = useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
   const assignee = useFilterStore((s) => s.assignee);
   const [searchParams] = useSearchParams();
   const q = (searchParams.get("q") ?? "").toLowerCase();

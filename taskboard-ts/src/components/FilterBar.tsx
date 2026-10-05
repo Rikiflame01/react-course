@@ -1,11 +1,15 @@
+// Lab 6.2: search in the URL
+// Lab 7.2: assignee in useFilterStore
+// Lab 7.3: tasks from useQuery
 import { useSearchParams } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTasks } from "../api/tasks";
 import { useFilterStore } from "../state/useFilterStore";
-import { useTaskStore } from "../state/useTaskStore";
 
 export default function FilterBar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const q = searchParams.get("q") ?? "";
-  const tasks = useTaskStore((s) => s.tasks);
+  const { data: tasks = [] } = useQuery({ queryKey: ["tasks"], queryFn: fetchTasks });
   const assignee = useFilterStore((s) => s.assignee);
   const setAssignee = useFilterStore((s) => s.setAssignee);
   const assignees = [...new Set(tasks.flatMap((t) => (t.assignee ? [t.assignee] : [])))];

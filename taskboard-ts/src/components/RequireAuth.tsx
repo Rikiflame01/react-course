@@ -1,4 +1,5 @@
-// Lab 6.3
+// Lab 6.3: protect settings
+// Lab 7.1: useAuth from AuthContext
 import type { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router";
 import { useAuth } from "../hooks/useAuth";

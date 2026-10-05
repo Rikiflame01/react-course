@@ -504,6 +504,12 @@
   cursor: pointer;
 }
 
+/* Lab 7.3 */
+.hint {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
 /* Lab 6.2: shared nav, search, and page panels. */
 .app-nav {
   display: flex;
@@ -536,6 +542,7 @@
   font-weight: 650;
 }
 
+/* Lab 7.1: ThemeButton */
 .app-nav-user button,
 .login-form button,
 .theme-button {

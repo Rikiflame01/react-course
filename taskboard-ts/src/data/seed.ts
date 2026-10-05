@@ -1,4 +1,4 @@
-// Lab 7.2: seeding left Layout. Tasks now live in the Zustand store.
+// Lab 7.3: tasks come from json-server. Seed helper kept for reference.
 import type { Task } from "../types";
 import { projects } from "./projects";
 

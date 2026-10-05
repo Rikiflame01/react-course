@@ -1,7 +1,8 @@
+// Lab 7.3: create task via TanStack Query
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, SubmitEvent } from "react";
 import { projects } from "../data/projects";
-import { useTaskStore } from "../state/useTaskStore";
+import { useAddTask } from "../hooks/useAddTask";
 
 type AddTaskFormProps = {
   projectId?: string;
@@ -22,7 +23,7 @@ const emptyForm: FormState = {
 };
 
 function AddTaskForm({ projectId }: AddTaskFormProps) {
-  const addTask = useTaskStore((s) => s.addTask);
+  const addTask = useAddTask();
   const [form, setForm] = useState<FormState>(emptyForm);
   const [error, setError] = useState("");
   const titleRef = useRef<HTMLInputElement>(null);
@@ -44,16 +45,17 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
       setError("Title needs 3+ characters.");
       return;
     }
-    addTask({
-      id: crypto.randomUUID(),
-      title,
-      assignee: form.assignee.trim(),
-      points: Math.max(1, Number(form.points) || 1),
-      status: "todo",
-      tags: [],
-      projectId: projectId ?? form.projectId,
-    });
-    setForm({ ...emptyForm });
+    addTask.mutate(
+      {
+        title,
+        assignee: form.assignee.trim(),
+        points: Math.max(1, Number(form.points) || 1),
+        status: "todo",
+        tags: [],
+        projectId: projectId ?? form.projectId,
+      },
+      { onSuccess: () => setForm({ ...emptyForm }) },
+    );
     setError("");
   }
 
@@ -110,9 +112,14 @@ function AddTaskForm({ projectId }: AddTaskFormProps) {
             </select>
           </div>
         )}
-        <button type="submit">Add task</button>
+        <button type="submit" disabled={addTask.isPending}>
+          {addTask.isPending ? "Adding..." : "Add task"}
+        </button>
       </div>
       {error && <p id="new-task-error" role="alert">{error}</p>}
+      {addTask.isError && (
+        <p role="alert">Could not save the task: {addTask.error.message}</p>
+      )}
     </form>
   );
 }
