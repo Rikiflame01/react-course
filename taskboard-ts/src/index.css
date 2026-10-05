@@ -1,4 +1,38 @@
-/* Lab 6.2 */
+/* Lab 7.1: theme tokens. Light keeps Damian's lilac board. */
+:root {
+  --bg: #f5f3ff;
+  --bg-glow: #e0e7ff;
+  --text: #1e1b4b;
+  --muted: #6d6a8a;
+  --surface: rgba(255, 255, 255, 0.72);
+  --card: #ffffff;
+  --accent: #2563eb;
+  --accent-text: #1e3a8a;
+  --kicker: #4338ca;
+  --border: #a5b4fc;
+  --danger: #991b1b;
+  --danger-border: #fecaca;
+  --shadow: rgba(49, 46, 129, 0.08);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-glow: #1e3a8a;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --surface: #1e293b;
+  --card: #334155;
+  --accent: #93c5fd;
+  --accent-text: #dbeafe;
+  --kicker: #bfdbfe;
+  --border: #64748b;
+  --danger: #fca5a5;
+  --danger-border: #7f1d1d;
+  --shadow: rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
 nav a.active {
   font-weight: bold;
 }
@@ -7,8 +41,8 @@ body {
   margin: 0;
   font-family: "Segoe UI", "Trebuchet MS", sans-serif;
   line-height: 1.5;
-  color: #1e1b4b;
+  color: var(--text);
   background:
-    radial-gradient(circle at top left, #e0e7ff 0, transparent 42%),
-    #f5f3ff;
+    radial-gradient(circle at top left, var(--bg-glow) 0, transparent 42%),
+    var(--bg);
 }

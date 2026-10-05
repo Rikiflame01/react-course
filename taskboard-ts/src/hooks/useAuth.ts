@@ -1,18 +1,12 @@
-// Lab 6.3
-import { useLocalStorage } from "./useLocalStorage";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-export type User = { name: string };
+export type { User } from "../context/AuthContext";
 
 export function useAuth() {
-  const [user, setUser] = useLocalStorage<User | null>("user", null);
-
-  function login(name: string) {
-    setUser({ name });
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    throw new Error("useAuth must be inside AuthProvider");
   }
-
-  function logout() {
-    setUser(null);
-  }
-
-  return { user, login, logout };
+  return ctx;
 }

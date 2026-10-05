@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { ThemeButton } from "../components/ThemeButton";
 import { useAuth } from "../hooks/useAuth";
 import { projects } from "../data/projects";
 import { SEED_URL, toTasks } from "../data/seed";
@@ -68,6 +69,7 @@ export default function Layout() {
           </NavLink>
         ))}
         <NavLink to="/settings">Settings</NavLink>
+        <ThemeButton />
         {user ? (
           <span className="app-nav-user">
             <span>{user.name}</span>
